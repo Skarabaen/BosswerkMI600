@@ -33,7 +33,7 @@ webinterface_url = 'http://192.168.x.x/status.html'
 
 
 def connectMQTT(ip, port):
- #https://github.com/Skarabaen/bosswerk_mi600_solar
+ #https://github.com/fr00sch/bosswerk_mi600_solar
  #https://pypi.org/project/paho-mqtt/
  client = mqtt.Client()
  client.username_pw_set(mqtt_username, mqtt_password)
@@ -44,14 +44,14 @@ def connectMQTT(ip, port):
  return client
 
 def sendData(client, webdata_now_p, webdata_today_e, webdata_total_e):
-    #https://github.com/Skarabaen/bosswerk_mi600_solar
+    #https://github.com/fr00sch/bosswerk_mi600_solar
     startmsg = json.dumps({"device": {"status": {"clientname":'MI600', "status":'Online', "power":webdata_now_p, "today":webdata_today_e, "total":webdata_total_e, "lastDateUpdate":datetime.today().strftime('%Y-%m-%d %H:%M:%S')}}}, skipkeys = True, allow_nan = False);
     client.publish(topic, startmsg, qos=0, retain=False)
     client.disconnect()
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
-    #https://github.com/Skarabaen/bosswerk_mi600_solar
+    #https://github.com/fr00sch/bosswerk_mi600_solar
     print("Connected with result code "+str(rc))
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
@@ -59,7 +59,7 @@ def on_connect(client, userdata, flags, rc):
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
-    #https://github.com/Skarabaen/bosswerk_mi600_solar
+    #https://github.com/fr00sch/bosswerk_mi600_solar
     print(msg.topic+":"+str(msg.payload))  
 
 
