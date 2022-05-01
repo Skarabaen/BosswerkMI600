@@ -102,24 +102,24 @@ def get_Solar_values():
         if r.status_code == 200:
             hp_source = str(r.text)
             #print(hp_source)
-            #print(find_target_value("var webdata_now_p =", hp_source))
             error = re.search("ERROR:404 Not Found:", hp_source)
-            ret0 = find_target_value("var webdata_now_p =", hp_source)
-            #print(find_target_value("var webdata_today_e =", hp_source))
-            ret1 = find_target_value("var webdata_today_e =", hp_source)
-            #print(find_target_value("var webdata_total_e =", hp_source))
-            ret2 = find_target_value("var webdata_total_e =", hp_source)
 
 
             if(hp_source.find('ERROR:404 Not Found') == True):
                 print(error)
             else:
+                ret0 = find_target_value("var webdata_now_p =", hp_source)
+                #print(find_target_value("var webdata_now_p =", hp_source))
                 if not (re.search('---',ret0) == True):
                     power = ret0
                     #print(ret0)
+                ret1 = find_target_value("var webdata_today_e =", hp_source)
+                #print(find_target_value("var webdata_today_e =", hp_source))
                 if not (re.search('---',ret1) == True):
                     today = ret1
                     #print(ret1)
+                ret2 = find_target_value("var webdata_total_e =", hp_source)
+                #print(find_target_value("var webdata_total_e =", hp_source))
                 if not (re.search('---',ret2) == True):
                     total = ret2
                     #print(ret2)
