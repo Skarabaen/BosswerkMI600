@@ -12,3 +12,5 @@ This little python script will readout quick and dirty the current values of the
 
 Note:
 Sometimes the converter has a timeout of some seconds or minutes. I do not know what the converter is doing in this time. Maybe there is an upload to Solarman???
+
+I started to use the script from https://github.com/fr00sch/bosswerk_mi600_solar. But because it use selenium there is a high cpu workload if the script is working. So I switched to my solution with less impact of workload. I have reused some script parts from https://github.com/fr00sch/bosswerk_mi600_solar
